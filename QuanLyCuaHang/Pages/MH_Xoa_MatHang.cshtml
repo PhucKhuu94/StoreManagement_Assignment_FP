@@ -1,0 +1,45 @@
+﻿@page
+@model QuanLyCuaHang.Pages.MH_Xoa_MatHangModel
+@using QuanLyCuaHang.Entities;
+@{
+}
+
+@if (Model.coDuLieu)
+{
+    <h1>Xóa Mặt Hàng</h1>
+    <br />
+
+    <h5>Bạn có muốn xóa Mặt Hàng <b>@Model.mh.TenMatHang</b></h5>
+    <br />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Mã Mặt hàng</th>
+                <th>Tên Mặt hàng</th>
+                <th>Cty sản xuất</th>
+                <th>Hạn sử dụng</th>
+                <th>Ngày sản xuất</th>
+                <th>Tên Loại hàng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.mh.MaMatHang</td>
+                <td>@Model.mh.TenMatHang</td>
+                <td>@Model.mh.CtySanXuat</td>
+                <td>@Model.mh.HanSuDung.ToString("dd/MM/yyyy")</td>
+                <td>@Model.mh.NgaySanXuat.ToString("dd/MM/yyyy")</td>
+                <td>@Model.tenLH</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form method="post" class="text-right">
+        <button type="submit" class="btn btn-danger">Xác nhận</button>
+        <a href="/MH_DanhSach_MatHang" class="btn btn-dark">Hủy</a>
+    </form>
+}
+else
+{
+    <div class="text-danger">@Model.Chuoi </div>
+}

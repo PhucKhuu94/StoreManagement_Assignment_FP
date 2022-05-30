@@ -1,0 +1,64 @@
+﻿@page
+@model QuanLyCuaHang.Pages.MH_TaoMoi_MatHangModel
+@using QuanLyCuaHang.Entities
+@{
+}
+
+<h1>Tạo mới Mặt Hàng</h1>
+<form method="post">
+    <h5>Nhập thông tin Mặt Hàng</h5>
+    <div class="row my-2">
+        <div class="col-4">
+            <label for="MaMH">Mã Mặt Hàng</label> <br />
+            <input type="text" name="MaMH" id="MaMH" class="form-control" />
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-4">
+            <label for="TenMH">Tên Mặt Hàng</label> <br />
+            <input type="text" name="TenMH" id="TenMH" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row my-2">
+        <div class="col-4">
+            <label for="Cty">Công ty sản xuất</label> <br />
+            <input type="text" name="Cty" id="Cty" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row my-2">
+        <div class="col-4">
+            <label for="HSD">Hạn sử dụng</label> <br />
+            <input type="date" name="HSD" id="HSD" class="form-control" min="2021-01-01"/>
+        </div>
+    </div>
+
+    <div class="row my-2">
+        <div class="col-4">
+            <label for="NSX">Ngày sản xuất</label> <br />
+            <input type="date" name="NSX" id="NSX" class="form-control" min="2020-01-01"/>
+        </div>
+    </div>
+
+    <div class="row my-2">
+        <div class="col-4">
+            <label for="LH">Loại Hàng</label> <br />
+            <select class="form-control" name="LH">
+                <option value="">Chọn Loại Hàng</option>
+                @foreach (LoaiHang item in Model.dsLH)
+                {
+                    <option value="@item.MaLoaiHang">@item.TenLoaiHang</option>
+                }
+            </select>
+        </div>
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-success">Tạo mới</button>
+    <a href="/MH_DanhSach_MatHang" class="btn btn-secondary" style="text-decoration: none;">Hủy</a>
+</form>
+<br />
+<div style="color: red;">
+    @Model.Chuoi
+</div>

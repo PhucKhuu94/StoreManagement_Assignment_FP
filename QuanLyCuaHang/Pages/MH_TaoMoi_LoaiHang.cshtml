@@ -1,0 +1,31 @@
+﻿@page
+@model QuanLyCuaHang.Pages.MH_TaoMoi_LoaiHangModel
+@using QuanLyCuaHang.Entities
+@{
+}
+<h1>Tạo mới Loại Hàng</h1>
+<br />
+<form method="post">
+    <h5>Nhập thông tin Loại Hàng</h5>
+    <div class="row my-3">
+        <div class="col-4">
+            <label for="MaLH">Mã loại hàng</label> <br />
+            <input type="text" name="MaLH" id="MaLH" class="form-control"/>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col-4">
+            <label for="TenLH">Tên loại hàng</label> <br />
+            <input type="text" name="TenLH" id="TenLH" class="form-control" />
+        </div>
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-success">Tạo mới</button>
+    <a href="/MH_DanhSach_LoaiHang" class="btn btn-secondary" style="text-decoration: none;">Hủy</a>
+</form>
+<br />
+<div style="color: red;">
+    @Model.Chuoi
+</div>
+

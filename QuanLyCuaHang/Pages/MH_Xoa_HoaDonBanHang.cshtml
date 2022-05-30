@@ -1,0 +1,40 @@
+﻿@page
+@model QuanLyCuaHang.Pages.MH_Xoa_HoaDonBanHangModel
+@{
+}
+
+@if (@Model.coDuLieu)
+{
+    <h1>Xóa Hóa Đơn - Bán Hàng</h1>
+    <br />
+    <br />
+    <h5>Bạn có muốn xóa "Hóa đơn Bán hàng" có mã là @Model.hoaDon.MaHoaDon ?</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Mã Hóa Đơn</th>
+                <th>Tên Mặt Hàng</th>
+                <th>Số lượng</th>
+                <th>Ngày tạo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.hoaDon.MaHoaDon</td>
+                <td>@Model.hoaDon.TenMatHang</td>
+                <td>@Model.hoaDon.SoLuong</td>
+                <td>@Model.hoaDon.NgayTao.ToString("dd/MM/yyyy")</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Xác nhận</button>
+        <a href="/MH_DanhSach_HoaDonBanHang" class="btn btn-secondary"
+           style="text-decoration: none;">Hủy</a>
+    </form>
+}
+else
+{
+    @Model.Chuoi
+}

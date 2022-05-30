@@ -1,0 +1,64 @@
+﻿@page
+@model QuanLyCuaHang.Pages.MH_Sua_MatHangModel
+@using Entities
+@{
+}
+
+<h1>Sửa thông tin Mặt Hàng</h1>
+<br />
+@if (Model.coDuLieu)
+{
+    <form method="post">
+        <div class="row my-3">
+            <div class="col-4">
+                <label for="TenMH">Tên Mặt Hàng</label> <br />
+                <input type="text" name="TenMH" id="TenMH" value="@Model.thongTinMH.TenMatHang" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row my-3">
+            <div class="col-4">
+                <label for="Cty">Công ty sản xuất</label> <br />
+                <input type="text" name="Cty" id="Cty" value="@Model.thongTinMH.CtySanXuat" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row my-3">
+            <div class="col-4">
+                <label for="HSD">Hạn sử dụng</label> <br />
+                <input type="date" name="HSD" id="HSD" value="@Model.thongTinMH.HanSuDung.ToString("yyyy-MM-dd")" 
+                       class="form-control" min="2021-01-01" />
+            </div>
+        </div>
+
+        <div class="row my-3">
+            <div class="col-4">
+                <label for="NSX">Ngày sản xuất</label> <br />
+                <input type="date" name="NSX" id="NSX" value="@Model.thongTinMH.NgaySanXuat.ToString("yyyy-MM-dd")" 
+                       class="form-control" min="2020-01-01" />
+            </div>
+        </div>
+
+        <div class="row my-3">
+            <div class="col-4">
+                <label for="LH">Loại Hàng</label> <br />
+                <select class="form-control" name="LH">
+                    <option value="@Model.thongTinMH.MaLoaiHang">@Model.TenLH</option>
+                    @foreach (LoaiHang item in Model.dsLH)
+                    {
+                        <option value="@item.MaLoaiHang">@item.TenLoaiHang</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <br />
+
+        <button type="submit" class="btn btn-success">Xác nhận</button>
+        <a href="/MH_DanhSach_MatHang" class="btn btn-dark">Hủy</a>
+    </form>
+}
+else
+{
+<div style="color: red;">@Model.Chuoi</div>
+}
+

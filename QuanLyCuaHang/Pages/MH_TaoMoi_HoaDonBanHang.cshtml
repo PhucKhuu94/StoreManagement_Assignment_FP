@@ -1,0 +1,55 @@
+﻿@page
+@model QuanLyCuaHang.Pages.MH_TaoMoi_HoaDonBanHangModel
+@using Entities
+@{
+}
+
+<h1>Tạo mới Hóa Đơn Bán Hàng</h1>
+<form method="post">
+    <h5>Nhập thông tin Hóa Đơn</h5>
+
+    <div class="row my-3">
+        <div class="col-4">
+            <label for="MaHD">Mã Hóa Đơn</label> <br />
+            <input type="text" name="MaHD" id="MaHD" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row my-3">
+        <div class="col-4">
+            <label for="NgayTao">Ngày Tạo Hóa Đơn</label> <br />
+            <input type="date" name="NgayTao" id="NgayTao" class="form-control" value="@DateTime.Today.ToString("yyyy-MM-dd")"/>
+        </div>
+    </div>
+
+    <div class="row my-3">
+        <div class="col-4">
+            <label for="TenMH">Tên Mặt Hàng</label> <br />
+            <select class="form-control" name="TenMH">
+                <option value="">Chọn Mặt Hàng</option>
+                @foreach (MatHang item in Model.dsMH)
+                {
+                    <option value="@item.TenMatHang">@item.TenMatHang</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="row my-3">
+        <div class="col-4">
+            <label for="SoLuong">Số Lượng</label> <br />
+            <input type="text" name="SoLuong" id="SoLuong" class="form-control" />
+        </div>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">Tạo mới</button>
+    <a href="/MH_DanhSach_HoaDonBanHang" class="btn btn-secondary" style="text-decoration: none;">Hủy</a>
+</form>
+
+<br />
+
+<div style="color: red;">
+    @Model.Chuoi
+</div>

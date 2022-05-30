@@ -1,0 +1,61 @@
+﻿@page
+@model QuanLyCuaHang.Pages.MH_DanhSach_HoaDonBanHangModel
+@using QuanLyCuaHang.Entities
+@{
+}
+
+<h1>Quản lý Hóa Đơn - Bán Hàng</h1>
+<br />
+@* Chức năng "thêm mới" *@
+<div>
+    <h6>
+        <a href="/MH_TaoMoi_HoaDonBanHang" style="text-decoration: none;">Thêm Hóa Đơn "Bán hàng" mới</a>
+    </h6>
+</div>
+<br />
+
+@* Chức năng tìm kiếm *@
+<div>
+    <form method="post">
+        <div class="input-group">
+            <input type="text" name="TuKhoa" class="form-control" placeholder="nhập từ khóa">
+            <div class="input-group-append">
+                <button class="btn btn-info" type="submit">Tìm kiếm</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br />
+
+@* Bảng danh sách *@
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã Hóa Đơn</th>
+                <th>Tên Mặt Hàng</th>
+                <th>Số lượng</th>
+                <th>Ngày Tạo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (HoaDon eachItem in Model.dsHD)
+            {
+                <tr>
+                    <td>#@(Model.dsHD.IndexOf(eachItem) + 1)</td>
+                    <td>@eachItem.MaHoaDon</td>
+                    <td>@eachItem.TenMatHang</td>
+                    <td>@eachItem.SoLuong</td>
+                    <td>@eachItem.NgayTao.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a href="/MH_Sua_HoaDonBanHang?MaHD=@eachItem.MaHoaDon">Sửa</a>
+                        |
+                        <a href="/MH_Xoa_HoaDonBanHang?MaHD=@eachItem.MaHoaDon">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

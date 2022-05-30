@@ -1,0 +1,68 @@
+﻿@page
+@model QuanLyCuaHang.Pages.MH_DanhSach_MatHangModel
+@using QuanLyCuaHang.Entities;
+@{
+}
+
+<h1>Quản lý Mặt Hàng</h1>
+<br />
+<div>
+    <h6>
+        <a href="/MH_TaoMoi_MatHang" style="text-decoration: none;">Thêm Mặt Hàng mới</a>
+    </h6>
+</div>
+<br />
+<div>
+    <form method="post">
+        <div class="input-group">
+            <input type="text" name="TuKhoa" class="form-control" placeholder="nhập từ khóa">
+            <div class="input-group-append">
+                <button class="btn btn-info" type="submit">Tìm kiếm</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br />
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã Mặt Hàng</th>
+                <th>Tên Mặt Hàng</th>
+                <th>Cty Sản Xuất</th>
+                <th>Hạn Sử Dụng</th>
+                <th>Ngày Sản Xuất</th>
+                <th>Tên Loại Hàng</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MatHang mh in Model.dsMH)
+            {
+                <tr>
+                    <td>#@(Model.dsMH.IndexOf(mh) + 1)</td>
+                    <td>@mh.MaMatHang</td>
+                    <td>@mh.TenMatHang</td>
+                    <td>@mh.CtySanXuat</td>
+                    <td>@mh.HanSuDung.ToString("dd/MM/yyyy")</td>
+                    <td>@mh.NgaySanXuat.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @foreach (LoaiHang item in Model.dsLH)
+                        {
+                            if (item.MaLoaiHang == mh.MaLoaiHang)
+                            {
+                                @item.TenLoaiHang
+                            }
+                        }
+                    </td>
+                    <td>
+                        <a href="/MH_Sua_MatHang?MaMH=@mh.MaMatHang">Sửa</a>
+                        |
+                        <a href="/MH_Xoa_MatHang?MaMH=@mh.MaMatHang">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

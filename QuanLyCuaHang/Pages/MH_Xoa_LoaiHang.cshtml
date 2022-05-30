@@ -1,0 +1,72 @@
+﻿@page
+@model QuanLyCuaHang.Pages.MH_Xoa_LoaiHangModel
+@using Entities
+@{
+}
+
+@if (@Model.coDuLieu)
+{
+    <h1>Xóa Loại Hàng</h1>
+    <br />
+    <h5>Bạn có muốn xóa Loại Hàng @Model.infoLH.TenLoaiHang ?</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Mã Loại Hàng</th>
+                <th>Tên Loại Hàng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.infoLH.MaLoaiHang</td>
+                <td>@Model.infoLH.TenLoaiHang</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br />
+
+    @if (Model.dsMHLienQuan.Count > 0)
+    {
+        <div> Xóa <b>Loại Hàng</b> sẽ <b>xóa luôn</b> các Mặt Hàng liên quan gồm:</div>
+        <br />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Mã Mặt Hàng</th>
+                    <th>Tên Mặt Hàng</th>
+                    <th>Tên Loại Hàng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (MatHang mh in Model.dsMHLienQuan)
+                {
+                    <tr>
+                        <td>@mh.MaMatHang</td>
+                        <td>@mh.TenMatHang</td>
+                        <td>
+                            @foreach (var item in Model.dsLH)
+                            {
+                                if (item.MaLoaiHang == mh.MaLoaiHang)
+                                {
+                                    @item.TenLoaiHang
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <br />
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Xác nhận</button>
+        <a href="/MH_DanhSach_LoaiHang" class="btn btn-secondary"
+           style="text-decoration: none;">Hủy</a>
+    </form>
+}
+else
+{
+    <div style="color: red;">@Model.Chuoi</div>
+}

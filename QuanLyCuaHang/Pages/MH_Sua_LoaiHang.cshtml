@@ -1,0 +1,30 @@
+﻿@page
+@model QuanLyCuaHang.Pages.Shared.MH_Sua_LoaiHangModel
+@using QuanLyCuaHang.Entities;
+@{
+}
+
+<h1>Sửa thông tin Loại Hàng</h1>
+<br />
+
+@if (Model.coDuLieu)
+{
+<form method="post">
+    <div class="row">
+        <div class="col-4">
+            <label>Tên Loại Hàng</label> <br />
+            <input type="text" name="TenLH" class="form-control"
+                   value="@Model.LoaiHang.TenLoaiHang">
+        </div>
+    </div>
+    <br />
+
+    <button class="btn btn-success" type="submit">Xác nhận</button>
+    <a href="/MH_DanhSach_LoaiHang" class="btn btn-secondary" style="text-decoration: none;">Hủy</a>
+</form>
+}
+else 
+{ 
+    <div style="color: red;">@Model.Chuoi</div>
+}
+
